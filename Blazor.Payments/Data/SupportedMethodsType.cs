@@ -7,6 +7,7 @@ namespace Blazor.Payments.Data
 {
 	public enum SupportedMethodsType
 	{
+		BobBucks,
 		ApplePay,
 		SamsungPay,
 		GooglePay,

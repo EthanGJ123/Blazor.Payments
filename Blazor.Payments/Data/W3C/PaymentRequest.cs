@@ -1,6 +1,7 @@
 ﻿using System.Threading.Tasks;
 using Blazor.Payments.Contracts;
 using Blazor.Payments.Data;
+using Microsoft.JSInterop;
 
 namespace Blazor.Payments
 {
@@ -20,9 +21,10 @@ namespace Blazor.Payments
 			_paymentOptions = paymentOptions;
 		}
 
-		public Task Show()
+		public Task Show(IJSRuntime jsRuntime)
 		{
 			return PaymentJSInterop.Show(
+                jsRuntime,
 				_paymentMethods,
 				_paymentDetails,
 				_paymentOptions);

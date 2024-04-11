@@ -1,5 +1,6 @@
 ﻿using System.Threading.Tasks;
 using Blazor.Payments.Data;
+using Microsoft.JSInterop;
 
 namespace Blazor.Payments.Contracts
 {
@@ -12,6 +13,6 @@ namespace Blazor.Payments.Contracts
 		/// <param name="paymentDetails"></param>
 		/// <param name="paymentOptions"></param>
 		/// <returns></returns>
-		Task Show();
+		Task Show(IJSRuntime jsRuntime);
 	}
 }

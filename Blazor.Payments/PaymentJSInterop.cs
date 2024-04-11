@@ -6,15 +6,15 @@ namespace Blazor.Payments
 {
 	internal static class PaymentJSInterop
 	{
-		public static Task<bool> CanMakePayment()
+		public static async Task<bool> CanMakePayment(IJSRuntime jsRuntime)
 		{
-			return JSRuntime.Current.InvokeAsync<bool>(
+			return await jsRuntime.InvokeAsync<bool>(
 				   "blazorPaymentsInterop.canMakePayment");
 		}
 
-		public static async Task Show(PaymentMethod[] paymentMethods, PaymentDetailsBase paymentDetails, PaymentOptions paymentOptions)
+		public static async Task Show(IJSRuntime jsRuntime, PaymentMethod[] paymentMethods, PaymentDetailsBase paymentDetails, PaymentOptions paymentOptions)
 		{
-			await JSRuntime.Current.InvokeAsync<object>(
+			await jsRuntime.InvokeAsync<object>(
 				"blazorPaymentsInterop.showPayment",
 				paymentMethods,
 				paymentDetails,

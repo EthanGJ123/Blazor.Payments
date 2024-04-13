@@ -1,24 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Text.Json.Serialization;
 
 namespace Blazor.Payments.Data
 {
-	public class PaymentItem
-	{
-		public PaymentItem(
-			string label,
-			PaymentCurrencyAmount amount, 
-			bool pending = false)
-		{
-			this.label = label;
-			this.amount = amount;
-			this.pending = pending;
-		}
+    public class PaymentItem
+    {
+        public PaymentItem(
+            string Label,
+            PaymentCurrencyAmount Amount,
+            bool Pending = false)
+        {
+            this.Label = Label;
+            this.Amount = Amount;
+            this.Pending = Pending;
+        }
 
-		public string label { get; set; }
-		public PaymentCurrencyAmount amount { get; set; }
-		public bool pending { get; set; }
-	}
+        [JsonPropertyName("label")]
+        public string Label { get; set; }
+
+        [JsonPropertyName("amount")]
+        public PaymentCurrencyAmount Amount { get; set; }
+
+        [JsonPropertyName("pending")]
+        public bool Pending { get; set; }
+    }
 }

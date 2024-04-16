@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace Blazor.Payments.Data
+﻿namespace Blazor.Payments.Data
 {
 	public class PaymentCurrencyAmount
 	{
@@ -17,5 +12,14 @@ namespace Blazor.Payments.Data
 
 		public string currency { get; set; }
 		public string value { get; set;  }
+
+		public static PaymentCurrencyAmount operator +(PaymentCurrencyAmount a, PaymentCurrencyAmount b)
+		{
+			if(a.currency != b.currency)
+				throw new System.Exception("The two amounts were in different currencies. This should be handled by the payment method");
+			var aValue = double.Parse(a.value);
+			var bValue = double.Parse(b.value);
+			return new PaymentCurrencyAmount(a.currency, (aValue + bValue).ToString());
+		}
 	}
 }

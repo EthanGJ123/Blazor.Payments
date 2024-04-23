@@ -20,7 +20,7 @@ namespace Blazor.Payments.Data.Extensions
 				case SupportedMethodsType.Facebook:
 					return "fb";
 				case SupportedMethodsType.BobBucks:
-					return "https://bobbucks.dev/pay/";
+					return "https://bobbucks.dev/pay";
 				default:
 					return "";
 			}
